@@ -3,3 +3,5 @@ node_modules
 out
 .env*
 .DS_Store
+_backup_before_cinema_update/
+_backup_before_gstin_update/
