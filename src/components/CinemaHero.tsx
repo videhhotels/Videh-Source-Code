@@ -8,8 +8,8 @@ import MithilaScene from "@/components/MithilaScene";
 const IMGS = HALL.gallery && HALL.gallery.length ? HALL.gallery : [HALL.image];
 const CARDS = [
   { href: "/hall", label: "The hall", sub: "Photos and details", img: IMGS[0] },
-  { href: "/#rituals", label: "Every ceremony", sub: "Tilak to chaturthi", img: IMGS[1] || IMGS[0] },
-  { href: "/#visit", label: "Visit us", sub: "Ranti Road, Madhubani", img: IMGS[2] || IMGS[0] },
+  { href: "/ceremonies", label: "Every ceremony", sub: "Tilak to chaturthi", img: IMGS[1] || IMGS[0] },
+  { href: "/visit", label: "Visit us", sub: "Ranti Road, Madhubani", img: IMGS[2] || IMGS[0] },
 ];
 const LINES = [["A", "wedding", "hall"], ["that", "feels", "like", "home"]];
 

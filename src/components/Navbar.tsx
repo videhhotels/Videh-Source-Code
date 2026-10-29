@@ -6,9 +6,9 @@ import { Menu, X, MessageSquareHeart } from "lucide-react";
 
 const links = [
   { href: "/hall", label: "The hall" },
-  { href: "/#rituals", label: "Ceremonies" },
-  { href: "/#how", label: "How it works" },
-  { href: "/#visit", label: "Visit us" },
+  { href: "/ceremonies", label: "Ceremonies" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/visit", label: "Visit us" },
   { href: "/contact", label: "Contact" },
 ];
 

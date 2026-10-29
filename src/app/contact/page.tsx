@@ -6,7 +6,7 @@ import BusinessDetails from "@/components/BusinessDetails";
 import { BUSINESS as B } from "@/lib/business";
 
 export const metadata = pageMeta({
-  title: "Contact & Directions – Ranti Road, Madhubani",
+  title: "Contact Us – Email or Send a Message",
   description: "Contact Hotel Videh & Marriage Hall: Khesra No. 2083, Ranti Road, near Gumti No. 13, Madhubani, Bihar 847211. Email us or send a message.",
   path: "/contact",
 });

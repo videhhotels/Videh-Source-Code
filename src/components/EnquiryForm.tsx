@@ -122,6 +122,6 @@ export default function EnquiryForm({ venue, source, initial = {}, title }: Prop
     <button className="button button-dark button-full" type="submit" disabled={state === "sending" || !consent}>
       {state === "sending" ? <><Loader2 size={18} className="spin" /> Sending…</> : <><Send size={17} /> {venue ? "Send enquiry to this hall" : "Get hall options & prices"}</>}
     </button>
-    <p className="eq-note">No payment, no booking — just an enquiry. Your number is only shared with halls that match.</p>
+    <p className="eq-note">No payment, no booking — just an enquiry. Your number is only seen by our team.</p>
   </form>;
 }

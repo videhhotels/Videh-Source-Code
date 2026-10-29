@@ -541,3 +541,26 @@ body:before{opacity:.02}
 .ty-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
 .ty-note{display:flex;align-items:center;justify-content:center;gap:7px;color:var(--muted);margin-top:20px;font-size:15px;text-align:center;flex-wrap:wrap}
 @media(max-width:760px){.ty-next ol{grid-template-columns:1fr}.ty-actions .button{width:100%;justify-content:center}}
+
+/* ---- sub-pages: Ceremonies, How it works, Visit ---- */
+.subpage .rituals-section{padding-top:20px}
+.subpage .how-section .section-heading h2{font-size:clamp(28px,3.4vw,42px)}
+.sub-guide{padding:40px 0 70px}
+.sub-guide>h2,.sub-panel h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,42px);color:var(--green);margin:0 0 8px}
+.sub-intro{color:var(--muted);font-size:17px;line-height:1.7;max-width:720px}
+.sub-guide-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+.sub-guide-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;scroll-margin-top:120px}
+.sub-guide-dev{color:#8a1420;font-weight:700;font-size:18px}
+.sub-guide-item h3{font-family:var(--serif);font-weight:400;font-size:26px;color:var(--ink);margin:4px 0 8px}
+.sub-guide-item p{color:var(--muted);line-height:1.7;margin:0 0 10px}
+.sub-ask{background:#fff7ea;border-radius:10px;padding:10px 12px;color:var(--ink)!important}
+.sub-tips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.sub-tips div{display:grid;gap:4px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.sub-tips svg{color:var(--rust)}.sub-tips b{color:var(--ink)}.sub-tips span{color:var(--muted);line-height:1.6}
+.sub-tips-3{margin-bottom:70px}
+.sub-two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;padding:20px 0 80px}
+.sub-panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
+.sub-checks{list-style:none;padding:0;margin:14px 0;display:grid;gap:10px}
+.sub-checks li{display:flex;gap:10px;align-items:flex-start;line-height:1.6}.sub-checks svg{color:var(--leaf);flex:none;margin-top:3px}
+.how-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+@media(max-width:860px){.sub-guide-list,.sub-tips,.sub-two{grid-template-columns:1fr}}

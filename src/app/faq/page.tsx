@@ -15,7 +15,7 @@ const faqs = [
   { q: "My wedding date isn’t fixed yet. Can I still enquire?", a: "Yes. Tick “Date not fixed yet” on the form. We’ll share the details and check availability once your date is set." },
   { q: "Which ceremonies can I plan here?", a: "Tilak, haldi & matkor, vivah, reception and chaturthi. Tell us which ones you need when you enquire." },
   { q: "What will it cost?", a: "The price depends on your date, guest count, menu and decoration. We explain it on the call, before you decide." },
-  { q: "Can I visit the hall first?", a: <>Of course. <Link href="/#visit">Find us on Ranti Road, Madhubani</Link>, or tell us when you are coming and we will be there.</> },
+  { q: "Can I visit the hall first?", a: <>Of course. <Link href="/visit">Find us on Ranti Road, Madhubani</Link>, or tell us when you are coming and we will be there.</> },
   { q: "Who sees my phone number?", a: <>Only our team. See our <Link href="/privacy">privacy policy</Link>.</> },
 ];
 

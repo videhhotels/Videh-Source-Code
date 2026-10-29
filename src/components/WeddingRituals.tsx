@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 // The rituals of a Mithila wedding, and what each one needs from Videh.
-const rituals = [
+export const RITUALS = [
   { dev: "तिलक", name: "Tilak", text: "The bride’s family formally welcomes the groom — a gathering for both families.", fn: "Tilak", hue: "haldi" },
   { dev: "मटकोर", name: "Matkor & Haldi", text: "Songs, turmeric and the women of the family.", fn: "Haldi & Matkor", hue: "marigold" },
   { dev: "बारात", name: "Baraat", text: "The groom’s procession arrives, and the two families meet.", fn: "Vivah", hue: "leaf" },
@@ -11,12 +11,13 @@ const rituals = [
   { dev: "चतुर्थी", name: "Chaturthi", text: "The rituals of the fourth day, with close family.", fn: "Chaturthi", hue: "maroon" },
 ];
 
-export default function WeddingRituals() {
+/** `more` adds a link to the full Ceremonies page (home page); `bare` drops the section heading (Ceremonies page has its own H1). */
+export default function WeddingRituals({ more = false, bare = false }: { more?: boolean; bare?: boolean }) {
   return <section className="rituals-section" id="rituals">
     <div className="container">
-      <div className="section-heading"><div><div className="eyebrow">विवाह के विधि · The rituals</div><h2>Your wedding, <em>ritual by ritual.</em></h2></div><p>A Mithila wedding is many ceremonies, not one evening.<br />Tell us which ones you need.</p></div>
+      {!bare && <div className="section-heading"><div><div className="eyebrow">विवाह के विधि · The rituals</div><h2>Your wedding, <em>ritual by ritual.</em></h2></div><p>A Mithila wedding is many ceremonies, not one evening.<br />Tell us which ones you need.</p></div>}
       <ol className="ritual-track">
-        {rituals.map((r, n) => <li key={r.name} className={`ritual-card hue-${r.hue}`}>
+        {RITUALS.map((r, n) => <li key={r.name} className={`ritual-card hue-${r.hue}`}>
           <span className="ritual-step">{String(n + 1).padStart(2, "0")}</span>
           <span className="ritual-dev" lang="hi">{r.dev}</span>
           <h3>{r.name}</h3>
@@ -24,6 +25,7 @@ export default function WeddingRituals() {
           <Link href={`/enquire?ceremony=${encodeURIComponent(r.fn)}`} className="ritual-link">Plan your {r.name.split(" ")[0]} <ArrowUpRight size={16} /></Link>
         </li>)}
       </ol>
+      {more && <div className="how-cta"><Link className="button button-outline" href="/ceremonies">Explore every ceremony <ArrowRight size={17} /></Link></div>}
     </div>
   </section>;
 }
