@@ -521,3 +521,23 @@ body:before{opacity:.02}
 .cine.is-lite .ms-spark,.cine.is-lite .ms-petal{display:none}
 .marquee.is-off .marquee-track{animation-play-state:paused}
 .ss-dev{letter-spacing:.08em;will-change:opacity,transform}
+
+/* ---- thank-you page (after an enquiry) ---- */
+.ty-hero{position:relative;text-align:center;padding:clamp(56px,9vw,110px) 20px clamp(40px,6vw,70px);background:radial-gradient(60% 70% at 50% 40%,rgba(255,249,234,.97),rgba(255,243,214,.9) 60%,rgba(255,235,184,.85)),url('/mithila-hero.svg') center/cover;border-bottom:1px solid var(--line)}
+.ty-mark{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#fff;color:var(--leaf);box-shadow:0 14px 34px rgba(123,30,46,.16);margin:0 auto 18px;animation:tyPop .7s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes tyPop{from{transform:scale(.4);opacity:0}}
+.ty-eyebrow{display:flex;justify-content:center;color:#9b0f1a}
+.ty-hero h1{font-family:var(--serif);font-size:clamp(38px,6vw,66px);color:#4a1520;margin:10px 0 12px;font-weight:400}
+.ty-lead{max-width:640px;margin:0 auto;font-size:clamp(16px,1.6vw,19px);line-height:1.7;color:var(--ink)}
+.ty-summary{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:0;margin:22px auto 0;max-width:720px}
+.ty-summary li{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;color:var(--green)}
+.ty-next{padding:clamp(40px,6vw,70px) 20px 80px;max-width:1080px}
+.ty-next h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,40px);color:var(--green);text-align:center;margin:0 0 26px}
+.ty-next ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ty-next li{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.ty-next li span{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#fdebef;color:var(--rust);margin-bottom:12px}
+.ty-next li b{display:block;font-size:17px;color:var(--ink);margin-bottom:6px}
+.ty-next li p{margin:0;color:var(--muted);line-height:1.6;font-size:15px}
+.ty-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.ty-note{display:flex;align-items:center;justify-content:center;gap:7px;color:var(--muted);margin-top:20px;font-size:15px;text-align:center;flex-wrap:wrap}
+@media(max-width:760px){.ty-next ol{grid-template-columns:1fr}.ty-actions .button{width:100%;justify-content:center}}

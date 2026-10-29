@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { CheckCircle2, CalendarHeart, Users, Phone, UserRound, ChevronDown, Send, Loader2 } from "lucide-react";
 import type { Property } from "@/lib/data";
 import { BUSINESS } from "@/lib/business";
@@ -32,9 +33,22 @@ export default function EnquiryForm({ venue, source, initial = {}, title }: Prop
   const [trap, setTrap] = useState(""); // honeypot: real people never fill this
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const toggle = (c: string) => setCeremonies(list => list.includes(c) ? list.filter(x => x !== c) : [...list, c]);
   const cleanPhone = phone.replace(/[^0-9]/g, "").replace(/^(91|0)(?=\d{10}$)/, "");
+
+  // Success: open the thank-you page. Details travel in this tab's session storage, never in the URL.
+  function thanks() {
+    setState("done");   // inline confirmation stays as a fallback if navigation is slow
+    try {
+      sessionStorage.setItem("videh-enquiry", JSON.stringify({
+        first: name.trim().split(/\s+/)[0], phone4: cleanPhone.slice(-4), date: flexible ? null : date || null,
+        flexible, guests, ceremonies,
+      }));
+    } catch {}
+    router.push("/thank-you");
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -62,13 +76,13 @@ export default function EnquiryForm({ venue, source, initial = {}, title }: Prop
     const notify = () => fetch("/api/enquiry-notify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) });
     if (saved) {
       notify().catch(() => {}); // team email is a bonus; the enquiry is already safe in the database
-      setState("done");
+      thanks();
       return;
     }
     // Database save failed: try to reach the team by email so the lead is not lost.
     let emailed = false;
     try { emailed = (await notify()).ok; } catch {}
-    setState(emailed ? "done" : "error");
+    if (emailed) thanks(); else setState("error");
   }
 
   if (state === "done") return <div className="enquiry-done" role="status">
