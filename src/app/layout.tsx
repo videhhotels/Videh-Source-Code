@@ -10,6 +10,7 @@ import TiltEffect from "@/components/TiltEffect";
 import Footer from "@/components/Footer";
 import { OG_IMAGE, SITE_URL } from "@/lib/site";
 import EnquireFab from "@/components/EnquireFab";
+import SamePageTop from "@/components/SamePageTop";
 
 const head = Yatra_One({ weight: "400", subsets: ["latin", "devanagari"], variable: "--font-head", display: "swap" });
 const body = Mukta({ weight: ["400", "500", "600", "700"], subsets: ["latin", "devanagari"], variable: "--font-body", display: "swap" });
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${head.variable} ${body.variable}`}>
+    <html lang="en" className={`${head.variable} ${body.variable}`} data-scroll-behavior="smooth">
       <body>
         <a className="skip-link" href="#main">Skip to content</a>
         <Navbar />
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <EnquireFab />
+        <SamePageTop />
       </body>
     </html>
   );
