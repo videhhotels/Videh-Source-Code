@@ -11,3 +11,8 @@ create policy "Staff can update enquiries" on public.enquiries for update to aut
   using ((auth.jwt() ->> 'email') in ('videhhotels@gmail.com'))
   with check ((auth.jwt() ->> 'email') in ('videhhotels@gmail.com'));
 -- To add another staff member, add their email inside the three quoted lists above and run again.
+
+-- Allow staff to delete rows from the /admin dashboard (e.g. test or spam enquiries).
+drop policy if exists "Staff can delete enquiries" on public.enquiries;
+create policy "Staff can delete enquiries" on public.enquiries for delete to authenticated
+  using ((auth.jwt() ->> 'email') in ('videhhotels@gmail.com'));

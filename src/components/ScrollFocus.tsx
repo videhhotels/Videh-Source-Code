@@ -11,7 +11,7 @@ const SELECTOR = [
   "main h1", "main h2", "main h3", "main p", "main .eyebrow",
   "main .how-steps > li", "main .ritual-card", "main .promise-grid > div", "main .facts", "main .detail-notice",
 ].join(",");
-const SKIP = ".ty, .cine, .ss, .marquee, .stats, form, .detail-sidebar, .search-card, .enquire-card, .lb, .mobile-book-bar, .gal, .property-card, .show-tile";
+const SKIP = ".sb-app, .ty, .cine, .ss, .marquee, .stats, form, .detail-sidebar, .search-card, .enquire-card, .lb, .mobile-book-bar, .gal, .property-card, .show-tile";
 
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const ease = (t: number) => 1 - Math.pow(1 - t, 2.6);
