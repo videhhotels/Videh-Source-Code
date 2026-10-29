@@ -708,3 +708,11 @@ body:has(.sb-app){overflow:hidden}
   .sb-bulk{margin-left:0}
 }
 .sb-hbars em.st-new{background:#ff6b6b}.sb-hbars em.st-called{background:#f5c542}.sb-hbars em.st-site-visit{background:#5aa9ff}.sb-hbars em.st-won{background:#3ecf8e}.sb-hbars em.st-lost{background:#7a7a7a}
+
+/* footer bottom row: legal links sit with the copyright line, not pushed to the far right */
+.footer-bottom{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.footer-copy{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+.footer-policy{display:flex;flex-wrap:wrap;gap:6px 16px}
+.footer-policy a{color:rgba(255,255,255,.85)!important;text-decoration:underline;text-underline-offset:3px;margin:0!important}
+.footer-policy a:hover{color:var(--gold)!important}
+@media(max-width:760px){.footer-bottom{flex-direction:column;align-items:flex-start;text-align:left}.footer-copy{flex-direction:column;align-items:flex-start}}
