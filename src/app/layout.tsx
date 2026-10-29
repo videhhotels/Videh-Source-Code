@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   openGraph: { siteName: "Hotel Videh & Marriage Hall", type: "website", locale: "en_IN", images: [OG_IMAGE] },
   twitter: { card: "summary_large_image", images: [OG_IMAGE.url] },
   formatDetection: { telephone: false },
+  // Google Search Console ownership check (renders <meta name="google-site-verification" ...> in <head>)
+  verification: { google: "HkOpKsPtfKAik97aEeqVwBSZMwp9IMv4F9DdOMazg4s" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
