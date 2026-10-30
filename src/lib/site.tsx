@@ -40,6 +40,7 @@ export function venueSchema(extra: Record<string, unknown> = {}) {
     address: { "@type": "PostalAddress", streetAddress: "Khesra No. 2083, Ranti Road, Near Gumti No. 13", addressLocality: "Madhubani", addressRegion: "Bihar", postalCode: "847211", addressCountry: "IN" },
     hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${B.tradeName}, ${B.addressOneLine}`)}`,
     areaServed: { "@type": "AdministrativeArea", name: "Madhubani district, Bihar" },
+    sameAs: ["https://www.instagram.com/videhhotels/"],
     ...extra,
   };
 }

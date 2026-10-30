@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 import NewsletterForm from "@/components/NewsletterForm";
 import { BUSINESS as B } from "@/lib/business";
 export default function Footer() {
   return <footer className="footer">
     <div className="footer-pattern" />
     <div className="container footer-grid">
-      <div className="footer-brand"><Link href="/" className="brand footer-logo"><img className="brand-image" src="/videh-logo-128.webp" width={42} height={42} alt="Hotel Videh & Marriage Hall logo" /><span className="brand-word">videh<span className="brand-dot">.</span><small>HOTEL &amp; MARRIAGE HALL</small></span></Link><p>A home for every Mithila wedding — from tilak to reception. Send one enquiry and we’ll call you back.</p><div className="socials"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Videh on Instagram"><Instagram size={18} /></a><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Videh on Facebook"><Facebook size={18} /></a></div></div>
+      <div className="footer-brand"><Link href="/" className="brand footer-logo"><img className="brand-image" src="/videh-logo-128.webp" width={42} height={42} alt="Hotel Videh & Marriage Hall logo" /><span className="brand-word">videh<span className="brand-dot">.</span><small>HOTEL &amp; MARRIAGE HALL</small></span></Link><p>A home for every Mithila wedding — from tilak to reception. Send one enquiry and we’ll call you back.</p><div className="socials"><a href="https://www.instagram.com/videhhotels/" target="_blank" rel="noopener noreferrer me" aria-label="Hotel Videh on Instagram (@videhhotels)"><Instagram size={18} /></a><a className="socials-handle" href="https://www.instagram.com/videhhotels/" target="_blank" rel="noopener noreferrer">@videhhotels</a></div></div>
       <div><h4>The hall</h4><Link href="/hall">Hall &amp; photos</Link><Link href="/ceremonies">Ceremonies</Link><Link href="/how-it-works">How it works</Link><Link href="/enquire">Send an enquiry</Link><Link href="/visit">Find us &amp; directions</Link></div>
       <div><h4>Help</h4><Link href="/about">About Videh</Link><Link href="/contact">Contact us</Link><Link href="/faq">FAQs</Link><Link href="/policies">How enquiries work</Link></div>
       <div className="newsletter"><h4>Notes from Videh</h4><p>Wedding-season dates, tips and Mithila traditions.</p><NewsletterForm /><small>By subscribing, you agree to receive updates from Videh. See our <Link href="/privacy">privacy policy</Link>.</small></div>
