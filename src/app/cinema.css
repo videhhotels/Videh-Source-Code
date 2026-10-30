@@ -725,3 +725,6 @@ body:has(.sb-app){overflow:hidden}
 /* footer now has three columns (brand, The hall, Help) — newsletter removed */
 .footer-grid{grid-template-columns:1.6fr 1fr 1fr!important}
 @media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr!important}.footer-grid>.footer-brand{grid-column:1/-1}}
+/* Toran garland under the header: shown at the top of the page, gently folds away once you scroll */
+.site-header:before{transition:opacity .35s ease,transform .35s ease;transform-origin:top center}
+.site-header.is-scrolled:before{opacity:0;transform:translateY(-12px) scaleY(.6)}
