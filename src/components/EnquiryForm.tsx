@@ -56,7 +56,7 @@ export default function EnquiryForm({ venue, source, initial = {}, title }: Prop
     if (trap) { setState("done"); return; }
     if (name.trim().length < 2) { setError("Please enter your name."); return; }
     if (!/^[6-9]\d{9}$/.test(cleanPhone)) { setError("Please enter a valid 10-digit mobile number."); return; }
-    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) { setError("Please check your email address, or leave it empty."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) { setError(email.trim() ? "Please check your email address." : "Please enter your email address."); return; }
     if (!date && !flexible) { setError("Please pick the wedding date, or tick “Date not fixed yet”."); return; }
     setError(""); setState("sending");
     const lead = {
@@ -100,7 +100,7 @@ export default function EnquiryForm({ venue, source, initial = {}, title }: Prop
     <div className="enquiry-grid">
       <label className="eq-field"><span><UserRound size={15} /> Your name</span><input required value={name} onChange={e => setName(e.target.value)} placeholder="Full name" autoComplete="name" /></label>
       <label className="eq-field"><span><Phone size={15} /> Mobile number</span><div className="eq-phone"><b>+91</b><input required type="tel" inputMode="numeric" value={phone} onChange={e => setPhone(e.target.value)} placeholder="98765 43210" autoComplete="tel-national" /></div></label>
-      <label className="eq-field eq-wide"><span><Mail size={15} /> Email <em className="eq-opt">(optional — we’ll email you a copy)</em></span><input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="email" inputMode="email" /></label>
+      <label className="eq-field eq-wide"><span><Mail size={15} /> Email <em className="eq-opt">(we’ll email you a copy)</em></span><input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="email" inputMode="email" /></label>
       <label className="eq-field"><span><CalendarHeart size={15} /> Wedding / lagan date</span><input type="date" disabled={flexible} min={new Date().toISOString().slice(0, 10)} value={date} onChange={e => setDate(e.target.value)} /></label>
       <label className="eq-field"><span><Users size={15} /> Expected guests</span><select value={guests} onChange={e => setGuests(e.target.value)}>{GUESTS.map(g => <option key={g}>{g}</option>)}</select></label>
     </div>
