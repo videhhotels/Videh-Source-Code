@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/site";
+import { JsonLd, breadcrumbs, pageMeta } from "@/lib/site";
 import Link from "next/link";
 import InfoPage from "@/components/InfoPage";
 import { BUSINESS as B } from "@/lib/business";
@@ -7,6 +7,7 @@ export const metadata = pageMeta({ title: "Terms of Use", description: "The term
 
 export default function TermsPage() {
   return <InfoPage eyebrow="Terms" title="Terms of use." intro="The simple rules for using Videh.">
+    <JsonLd data={breadcrumbs([["Terms of use", "/terms"]])} />
     {/* Draft text. Have it reviewed by a legal professional before launch. */}
     <div className="info-prose">
       <h2>Who we are</h2>

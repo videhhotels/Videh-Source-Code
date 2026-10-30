@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/site";
+import { JsonLd, breadcrumbs, pageMeta } from "@/lib/site";
 import Link from "next/link";
 import InfoPage from "@/components/InfoPage";
 
@@ -6,6 +6,7 @@ export const metadata = pageMeta({ title: "How Enquiries Work", description: "Wh
 
 export default function PoliciesPage() {
   return <InfoPage eyebrow="How enquiries work" title="Enquiry, not booking." intro="Plain-language notes on what happens after you send an enquiry.">
+    <JsonLd data={breadcrumbs([["How enquiries work", "/policies"]])} />
     {/* Draft text. Have it reviewed against how your business actually operates before launch. */}
     <div className="info-prose">
       <h2>An enquiry is not a booking</h2>

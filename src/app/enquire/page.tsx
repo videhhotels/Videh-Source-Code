@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/site";
+import { JsonLd, breadcrumbs, pageMeta } from "@/lib/site";
 import Link from "next/link";
 import { ClipboardList, PhoneCall, Landmark, ShieldCheck } from "lucide-react";
 import EnquiryForm from "@/components/EnquiryForm";
@@ -13,6 +13,7 @@ export const metadata = pageMeta({
 export default function EnquirePage({ searchParams }: { searchParams: { guests?: string; ceremony?: string; venue?: string; city?: string } }) {
   const venue = HALL;
   return <div className="enquire-page">
+    <JsonLd data={breadcrumbs([["Enquire", "/enquire"]])} />
     <section className="listing-heading container"><div className="eyebrow">शुभ विवाह · Enquiry</div><h1>Tell us about the wedding. <em>We’ll confirm the hall.</em></h1><p>One short form. We check that Hotel Videh &amp; Marriage Hall is free on your lagan date, then call you back to talk through your guests and ceremonies.</p></section>
     <section className="container enquire-layout">
       <div className="enquire-card"><EnquiryForm source="enquire-page" venue={venue} initial={{ guests: searchParams.guests, ceremony: searchParams.ceremony, city: searchParams.city }} /></div>

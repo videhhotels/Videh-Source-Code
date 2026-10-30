@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/site";
+import { JsonLd, breadcrumbs, pageMeta, venueSchema } from "@/lib/site";
 import Link from "next/link";
 import { ArrowRight, Sparkles, HeartHandshake, ShieldCheck } from "lucide-react";
 import InfoPage from "@/components/InfoPage";
@@ -12,6 +12,7 @@ export const metadata = pageMeta({
 
 export default function AboutPage() {
   return <InfoPage eyebrow="About us" title="A home for every Mithila wedding." intro="Hotel Videh & Marriage Hall is a wedding venue and hotel on Ranti Road, Madhubani.">
+    <JsonLd data={[venueSchema(), breadcrumbs([["About us", "/about"]])]} />
     <div className="info-split">
       <div className="info-prose">
         <h2>Our story</h2>

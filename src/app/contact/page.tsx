@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/site";
+import { JsonLd, breadcrumbs, pageMeta, venueSchema } from "@/lib/site";
 import { Mail, MapPin, Clock } from "lucide-react";
 import InfoPage from "@/components/InfoPage";
 import ContactForm from "@/components/ContactForm";
@@ -13,6 +13,7 @@ export const metadata = pageMeta({
 
 export default function ContactPage({ searchParams }: { searchParams: { topic?: string } }) {
   return <InfoPage eyebrow="Contact" title="Talk to us." intro="Planning a wedding? The quickest way is our enquiry form. For anything else, write to us here.">
+    <JsonLd data={[venueSchema(), breadcrumbs([["Contact", "/contact"]])]} />
     <div className="contact-layout">
       <ContactForm />
       <aside className="contact-info">

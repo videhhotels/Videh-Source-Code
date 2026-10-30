@@ -1,4 +1,4 @@
-import { pageMeta } from "@/lib/site";
+import { JsonLd, breadcrumbs, pageMeta } from "@/lib/site";
 import Link from "next/link";
 import InfoPage from "@/components/InfoPage";
 import { BUSINESS as B } from "@/lib/business";
@@ -7,6 +7,7 @@ export const metadata = pageMeta({ title: "Privacy Policy", description: "What H
 
 export default function PrivacyPage() {
   return <InfoPage eyebrow="Privacy" title="Your information, handled with care." intro="What we collect, why we collect it, and your choices.">
+    <JsonLd data={breadcrumbs([["Privacy policy", "/privacy"]])} />
     {/* Draft text. Have it reviewed by a legal professional before launch. */}
     <div className="info-prose">
       <h2>What we collect</h2>
