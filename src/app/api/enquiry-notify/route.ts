@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { BUSINESS } from "@/lib/business";
-import { clean, emailBudget, getTransport, isEmail, tooMany, wrap } from "@/lib/mail";
+import { clean, emailBudget, getTransport, isEmail, tooMany, wrap, customerConfirmation } from "@/lib/mail";
 
 export const runtime = "nodejs";
 
@@ -36,7 +36,17 @@ export async function POST(req: Request) {
       text: rows.map(([k, v]) => `${k}: ${v}`).join("\n"),
       html: wrap("New enquiry — Hotel Videh & Marriage Hall", rows, "Please call this guest back within one working day. Replying to this email reaches them directly if they gave an email address."),
     });
-    return NextResponse.json({ ok: true });
+    // Automatic confirmation to the guest, if they gave an email. Fixed wording (no free text from the form)
+    // and at most one per address every 10 minutes, so the form can't be used to send messages to strangers.
+    let confirmed = false;
+    if (isEmail(email) && emailBudget(`guest:${email.toLowerCase()}`)) {
+      try {
+        const c = customerConfirmation({ name, phone, date, guests: clean(b.guests, 30), ceremonies });
+        await mail.transport.sendMail({ from: `"${BUSINESS.tradeName}" <${process.env.GMAIL_USER}>`, to: email, replyTo: BUSINESS.email, subject: c.subject, text: c.text, html: c.html });
+        confirmed = true;
+      } catch (e) { console.error("guest confirmation failed", e); }
+    }
+    return NextResponse.json({ ok: true, confirmed });
   } catch (e) {
     console.error("enquiry mail failed", e);
     return NextResponse.json({ error: "Could not send." }, { status: 502 });

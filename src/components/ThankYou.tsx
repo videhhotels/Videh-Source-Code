@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, CalendarHeart, PhoneCall, Landmark, Navigation, ArrowRight, Mail } from "lucide-react";
 import { BUSINESS as B } from "@/lib/business";
 
-type Info = { first?: string; phone4?: string; date?: string | null; flexible?: boolean; ceremonies?: string[]; guests?: string };
+type Info = { first?: string; phone4?: string; date?: string | null; flexible?: boolean; ceremonies?: string[]; guests?: string; mail?: string };
 export const THANKS_KEY = "videh-enquiry";
 
 const fmt = (d?: string | null) => d ? new Date(d + "T00:00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "long", year: "numeric" }) : "";
@@ -27,6 +27,7 @@ export default function ThankYou() {
         Your enquiry has reached the team at <strong>{B.tradeName}</strong>.{" "}
         We will call you{info.phone4 ? <> on <strong>+91 ••••••{info.phone4}</strong></> : ""} within one working day.
       </p>
+      {info.mail && <p className="ty-mailnote"><Mail size={15} /> A copy of your enquiry is on its way to <b>{info.mail}</b>. If you don’t see it in a few minutes, check Spam or Promotions.</p>}
       {(info.date || info.flexible || info.guests || info.ceremonies?.length) ? (
         <ul className="ty-summary" aria-label="Your enquiry">
           {(info.date || info.flexible) && <li><CalendarHeart size={16} /> {info.flexible ? "Date not fixed yet" : fmt(info.date)}</li>}
