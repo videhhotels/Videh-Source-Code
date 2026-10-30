@@ -71,7 +71,7 @@ export default function AdminPage() {
     if (!STAFF.includes(em)) { setAuthMsg("This email is not on the staff list."); setBusy(false); return; }
     const { error } = await supabase.auth.signInWithOtp({ email: em, options: { shouldCreateUser: true, emailRedirectTo: typeof window !== "undefined" ? window.location.origin + "/admin" : undefined } });
     setBusy(false);
-    if (error) setAuthMsg(error.message); else { setSent(true); setAuthMsg("We emailed you a sign-in link. Open it on this device, or type the code if the email shows one."); }
+    if (error) setAuthMsg(error.message); else { setSent(true); setAuthMsg("We emailed you a 6-digit code. Enter it below (it can take a minute to arrive — check Spam too)."); }
   }
   async function verify(e: React.FormEvent) {
     e.preventDefault(); setBusy(true); setAuthMsg("");
@@ -169,11 +169,11 @@ export default function AdminPage() {
       <form className="sb-login" onSubmit={sent ? verify : sendCode}>
         <div className="sb-brand"><img src="/videh-logo-128.webp" alt="" width={28} height={28} /> Videh <span>CRM</span></div>
         <h1>Sign in to your dashboard</h1>
-        <p>Staff only. We email you a one-time sign-in link.</p>
+        <p>Staff only. We email you a one-time 6-digit code.</p>
         {session === "in" && !allowed && <p className="sb-err">{userEmail} is not on the staff list. <button type="button" className="sb-link" onClick={() => supabase.auth.signOut()}>Sign out</button></p>}
         <label>Email<input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder={BUSINESS.email} autoComplete="email" disabled={sent} /></label>
-        {sent && <label>Code (if the email shows one)<input inputMode="numeric" value={code} onChange={e => setCode(e.target.value)} placeholder="123456" autoComplete="one-time-code" /></label>}
-        <button className="sb-btn sb-btn-green" disabled={busy}>{busy ? "Please wait…" : sent ? "Sign in with code" : "Email me a sign-in link"}</button>
+        {sent && <label>6-digit code from the email<input inputMode="numeric" maxLength={10} autoFocus value={code} onChange={e => setCode(e.target.value.replace(/\D/g, ""))} placeholder="123456" autoComplete="one-time-code" /></label>}
+        <button className="sb-btn sb-btn-green" disabled={busy}>{busy ? "Please wait…" : sent ? "Sign in" : "Email me a code"}</button>
         {sent && <button type="button" className="sb-link" onClick={() => { setSent(false); setCode(""); setAuthMsg(""); }}>Use a different email</button>}
         {authMsg && <p className="sb-msg">{authMsg}</p>}
       </form>
