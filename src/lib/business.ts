@@ -2,7 +2,6 @@
 // Taken from the GST registration certificate (Form GST REG-06, issued 08/10/2026).
 export const BUSINESS = {
   tradeName: "Hotel Videh & Marriage Hall",
-  legalName: "Ruchi Jha",
   constitution: "Proprietorship",
   gstin: "10BWDPJ0535K1ZZ",
   email: "videhhotels@gmail.com",
