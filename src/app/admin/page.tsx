@@ -2,10 +2,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BarChart3, Table2, Download, LogOut, MessageCircle, Phone, RefreshCw, Search, X, Trash2, Mail,
-  ChevronLeft, ChevronRight, ArrowUpDown, Database, Inbox, CalendarDays, PhoneCall, Landmark, Trophy, Ban, Menu,
+  ChevronLeft, ChevronRight, ArrowUpDown, Database, Inbox, CalendarDays, PhoneCall, Landmark, Trophy, Ban, Menu, Newspaper,
 } from "lucide-react";
 import { supabase } from "../../../lib/supabase";
 import { BUSINESS } from "@/lib/business";
+import PostsAdmin from "@/components/admin/PostsAdmin";
 
 /* Staff CRM in the style of the Supabase table editor.
    Access is enforced by the database (supabase/crm.sql): only the staff email can read, update or delete rows. */
@@ -108,7 +109,7 @@ export default function AdminPage() {
   }, [session, allowed, load]);
 
   /* ---------- view state ---------- */
-  const [view, setView] = useState<"table" | "dashboard">("table");
+  const [view, setView] = useState<"table" | "dashboard" | "posts">("table");
   const [filter, setFilter] = useState<"all" | Status>("all");
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<{ key: keyof Lead; dir: 1 | -1 }>({ key: "created_at", dir: -1 });
@@ -189,6 +190,7 @@ export default function AdminPage() {
           <div className="sb-group">Project</div>
           <button className={view === "dashboard" ? "on" : ""} onClick={() => { setView("dashboard"); setNavOpen(false); }}><BarChart3 size={16} /> Dashboard</button>
           <button className={view === "table" && filter === "all" ? "on" : ""} onClick={() => { setView("table"); setFilter("all"); setNavOpen(false); }}><Table2 size={16} /> enquiries <i>{counts.all}</i></button>
+          <button className={view === "posts" ? "on" : ""} onClick={() => { setView("posts"); setNavOpen(false); }}><Newspaper size={16} /> posts</button>
           <div className="sb-group">Views</div>
           {STATUSES.map(s => { const I = STATUS_ICON[s]; return <button key={s} className={view === "table" && filter === s ? "on" : ""} onClick={() => { setView("table"); setFilter(s); setNavOpen(false); }}><I size={15} /> {s} <i>{counts[s]}</i></button>; })}
         </nav>
@@ -199,15 +201,15 @@ export default function AdminPage() {
       <main className="sb-main">
         <header className="sb-top">
           <button className="sb-icon sb-menu" onClick={() => setNavOpen(true)} aria-label="Menu"><Menu size={18} /></button>
-          <div className="sb-crumb"><span>public</span> / <b>{view === "dashboard" ? "dashboard" : "enquiries"}</b>{view === "table" && filter !== "all" && <em>status = {filter}</em>}</div>
-          <div className="sb-top-actions">
+          <div className="sb-crumb"><span>public</span> / <b>{view === "dashboard" ? "dashboard" : view === "posts" ? "posts" : "enquiries"}</b>{view === "table" && filter !== "all" && <em>status = {filter}</em>}</div>
+          {view !== "posts" && <div className="sb-top-actions">
             <button className="sb-btn" onClick={() => load()} title="Refresh"><RefreshCw size={14} className={loading ? "sb-spin" : ""} /> <span>Refresh</span></button>
             <button className="sb-btn" onClick={() => exportCsv(sel.size ? leads.filter(l => sel.has(l.id)) : rows)}><Download size={14} /> <span>{sel.size ? `Export ${sel.size}` : "Export CSV"}</span></button>
-          </div>
+          </div>}
         </header>
         {err && <div className="sb-banner">{err}{/relation|schema cache|permission|policy|column/i.test(err) && " — run supabase/crm.sql in the Supabase SQL Editor."} <button onClick={() => setErr("")}><X size={14} /></button></div>}
 
-        {view === "dashboard" ? <Dashboard leads={leads} counts={counts} go={(s) => { setView("table"); setFilter(s); }} open={(id) => { setView("table"); setOpenId(id); }} /> : <>
+        {view === "posts" ? <PostsAdmin flash={flash} /> : view === "dashboard" ? <Dashboard leads={leads} counts={counts} go={(s) => { setView("table"); setFilter(s); }} open={(id) => { setView("table"); setOpenId(id); }} /> : <>
           <div className="sb-toolbar">
             <label className="sb-search"><Search size={14} /><input value={q} onChange={e => setQ(e.target.value)} placeholder="Search name, phone, town, notes…" /></label>
             <label className="sb-sort"><ArrowUpDown size={14} />

@@ -1,12 +1,12 @@
 const isProd = process.env.NODE_ENV === "production";
 
 // Security headers. The Content-Security-Policy only allows what the site really uses:
-// its own files, Supabase (enquiry form), Google Maps (the map), and the placeholder photos from Unsplash.
+// its own files, Supabase (enquiry form, blog and its cover photos), Google Maps (the map), and the placeholder photos from Unsplash.
 const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isProd ? "" : " 'unsafe-eval'"}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://images.unsplash.com https://*.google.com https://*.gstatic.com https://*.googleapis.com",
+  "img-src 'self' data: blob: https://images.unsplash.com https://*.google.com https://*.gstatic.com https://*.googleapis.com https://*.supabase.co",
   "font-src 'self' data:",
   "connect-src 'self' https://*.supabase.co wss://*.supabase.co" + (isProd ? "" : " ws://localhost:* http://localhost:*"),
   "frame-src https://www.google.com https://maps.google.com",
