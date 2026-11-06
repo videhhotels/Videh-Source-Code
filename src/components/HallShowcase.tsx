@@ -13,7 +13,7 @@ export default function HallShowcase() {
       <Link className="text-link" href="/hall">See the hall in full <ArrowUpRight size={16} /></Link>
     </Reveal>
     <Reveal>
-      <Gallery images={images} alt={HALL.name} />
+      <Gallery images={images} alt={HALL.name} alts={HALL.galleryAlt} />
     </Reveal>
     <Reveal className="show-details">
       <p className="show-lead">{HALL.description}</p>

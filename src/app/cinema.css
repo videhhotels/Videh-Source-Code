@@ -800,3 +800,6 @@ body:has(.sb-app){overflow:hidden}
 .sb-serp cite{font-style:normal;font-size:12px;color:#4d5156}.sb-serp b{color:#1a0dab;font-size:17px;font-weight:400}.sb-serp p{margin:0;color:#4d5156;font-size:13px;line-height:1.5}
 .sb-error{color:#ff9b9b;background:#3b1414;border:1px solid #7a2a2a;border-radius:6px;padding:8px 10px;margin:0}
 @media(max-width:700px){.sb-two{grid-template-columns:1fr}}
+
+/* Hall gallery with exactly 4 photos: the last one fills the bottom-right (desktop) */
+@media(min-width:701px){.gal-4 .gal-cell-3{grid-column:2/4}}

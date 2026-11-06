@@ -1,1 +1,15 @@
-{}
+{
+  "madhurima-palace": [
+    "/halls/madhurima-palace/1.jpg",
+    "/halls/madhurima-palace/2.jpg",
+    "/halls/madhurima-palace/3.jpg",
+    "/halls/madhurima-palace/4.jpg",
+    "/halls/madhurima-palace/5.jpg"
+  ],
+  "videh-hall": [
+    "/halls/videh-hall/1.webp",
+    "/halls/videh-hall/2.webp",
+    "/halls/videh-hall/3.webp",
+    "/halls/videh-hall/4.webp"
+  ]
+}

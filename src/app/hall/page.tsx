@@ -23,7 +23,7 @@ export default function HallPage({ searchParams }: { searchParams: { guests?: st
     <JsonLd data={[venueSchema({ amenityFeature: HALL.amenities.map(a => ({ "@type": "LocationFeatureSpecification", name: a, value: true })) }), breadcrumbs([["The hall", "/hall"]])]} />
     <div className="container detail-layout">
       <div className="detail-main">
-        <Gallery images={gallery} alt={HALL.name} />
+        <Gallery images={gallery} alt={HALL.name} alts={HALL.galleryAlt} />
         <div className="detail-title-row"><div><div className="eyebrow">Wedding venue &amp; hotel in {HALL.city}</div><h1>{HALL.name}</h1><p className="property-location"><MapPin size={15} />{B.addressOneLine}</p></div></div>
         <div className="facts">
           {HALL.capacity && <div><Users size={20} /><span><small>Capacity</small><b>{HALL.capacity}</b></span></div>}

@@ -11,6 +11,8 @@ export type Property = {
   reviews: number;
   image: string;
   gallery?: string[];
+  /** One description per gallery photo, for screen readers and Google Images */
+  galleryAlt?: string[];
   tag?: string;
   description: string;
   amenities: string[];
@@ -27,12 +29,13 @@ export const properties: Property[] = [
   {
     id: "videh-hall", name: "Hotel Videh & Marriage Hall", category: "banquet", city: "Madhubani", area: "Ranti Road",
     price: 0, rating: 0, reviews: 0,
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=75",
-    gallery: [
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=75",
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=75",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=75",
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=75",
+    image: "/halls/videh-hall/1.webp",
+    gallery: ["/halls/videh-hall/1.webp", "/halls/videh-hall/2.webp", "/halls/videh-hall/3.webp", "/halls/videh-hall/4.webp"],
+    galleryAlt: [
+      "Inside Hotel Videh marriage hall: rows of draped chairs leading to the wedding stage",
+      "The hall from the stage: guest seating, sofas and a large Madhubani painting on the wall",
+      "Seating beside arched, lit wall panels with botanical murals and a floral photo backdrop",
+      "Long view of the hall with a lit aisle, mirrored pillars and the Madhubani painting by the sofas",
     ],
     description: "Hotel Videh & Marriage Hall is a marriage hall and hotel on Ranti Road, Madhubani, Bihar — a place to bring the whole family together for tilak, haldi, vivah and reception.",
     amenities: ["Marriage hall", "Hotel stay for guests"],

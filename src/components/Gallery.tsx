@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Grid2x2, X } from "lucide-react";
 
 /** Photo mosaic (1 large + up to 4 small) with a full-screen viewer — the pattern used by Airbnb, Booking and WedMeGood. */
-export default function Gallery({ images, alt, children }: { images: string[]; alt: string; children?: React.ReactNode }) {
+export default function Gallery({ images, alt, alts, children }: { images: string[]; alt: string; alts?: string[]; children?: React.ReactNode }) {
   const [open, setOpen] = useState<number | null>(null);
   const touchX = useRef<number | null>(null);
   const [bad, setBad] = useState<string[]>([]);   // photos that fail to load are dropped, so there are never broken tiles
@@ -26,7 +26,7 @@ export default function Gallery({ images, alt, children }: { images: string[]; a
     <div className={`gal gal-${Math.min(shown.length, 5)}`}>
       {shown.map((src, i) => (
         <button key={src + i} className={`gal-cell gal-cell-${i}`} onClick={() => setOpen(i)} aria-label={`Open photo ${i + 1} of ${n}`}>
-          <img src={src} alt={i === 0 ? alt : `${alt} — photo ${i + 1}`} loading={i === 0 ? "eager" : "lazy"} onError={() => setBad(b => [...b, src])} />
+          <img src={src} alt={alts?.[images.indexOf(src)] || (i === 0 ? alt : `${alt} — photo ${i + 1}`)} loading={i === 0 ? "eager" : "lazy"} onError={() => setBad(b => [...b, src])} />
         </button>
       ))}
       {children}
@@ -37,7 +37,7 @@ export default function Gallery({ images, alt, children }: { images: string[]; a
         <button className="lb-close" onClick={() => setOpen(null)} aria-label="Close"><X size={22} /></button>
         <span className="lb-count">{open + 1} / {n}</span>
         {n > 1 && <button className="lb-nav lb-prev" onClick={e => { e.stopPropagation(); go(-1); }} aria-label="Previous photo"><ChevronLeft size={26} /></button>}
-        <img className="lb-img" src={list[open]} alt={`${alt} — photo ${open + 1}`} onClick={e => e.stopPropagation()}
+        <img className="lb-img" src={list[open]} alt={alts?.[images.indexOf(list[open])] || `${alt} — photo ${open + 1}`} onClick={e => e.stopPropagation()}
           onTouchStart={e => { touchX.current = e.touches[0].clientX; }}
           onTouchEnd={e => { if (touchX.current === null) return; const d = e.changedTouches[0].clientX - touchX.current; if (Math.abs(d) > 40) go(d < 0 ? 1 : -1); touchX.current = null; }} />
         {n > 1 && <button className="lb-nav lb-next" onClick={e => { e.stopPropagation(); go(1); }} aria-label="Next photo"><ChevronRight size={26} /></button>}
