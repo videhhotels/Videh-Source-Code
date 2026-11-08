@@ -14,5 +14,6 @@ export default function Footer() {
       <p>{B.addressOneLine} · <a href={`mailto:${B.email}`}>{B.email}</a></p>
     </div>
     <div className="container footer-bottom"><div className="footer-copy"><span>© {new Date().getFullYear()} {B.tradeName}. All rights reserved.</span><nav className="footer-policy" aria-label="Legal"><Link href="/privacy">Privacy policy</Link><Link href="/terms">Terms of use</Link><Link href="/policies">Enquiry policy</Link></nav></div><span className="footer-blessing">शुभ मंगल · Designed with the spirit of Mithila.</span></div>
+    <div className="container footer-credit"><a href="https://www.newbi.live/" target="_blank" rel="noopener" title="NEWBI Marketing — website design & development">Designed &amp; developed by <span className="newbi-mark">NEWBI<sup>™</sup></span></a></div>
   </footer>;
 }
