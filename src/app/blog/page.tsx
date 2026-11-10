@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 export const metadata = pageMeta({
   title: "Wedding Planning Blog – Mithila Rituals & Tips",
-  description: "Ideas and guides for planning a Mithila wedding in Madhubani: tilak to chaturthi, guest planning, decoration and choosing your venue — from Hotel Videh & Marriage Hall.",
+  description: "Guides for planning a Mithila wedding in Madhubani: tilak to chaturthi, guest lists, decoration and choosing your venue, from Hotel Videh.",
   path: "/blog",
 });
 

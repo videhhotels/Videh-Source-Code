@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const post = await getPost((await params).slug);
-  if (!post) return { title: "Story not found", robots: { index: false } };
+  if (!post) return { title: "Story Not Found", description: "This wedding story is no longer on the Hotel Videh blog. Browse the latest planning tips and Mithila ritual guides instead.", robots: { index: false } };
   const description = post.seo_description || post.excerpt || plainText(post.content_md).slice(0, 155);
   const meta = pageMeta({
     title: post.seo_title || post.title, description, path: `/blog/${post.slug}`,
