@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { trackPixel } from "@/lib/pixel";
 import { CheckCircle2, Send } from "lucide-react";
 import { BUSINESS } from "@/lib/business";
 
@@ -17,7 +18,7 @@ export default function ContactForm({ initialTopic }: { initialTopic?: string })
     setStatus("sending"); setError("");
     try {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, email, topic, message, website }) });
-      if (res.ok) { setStatus("sent"); return; }
+      if (res.ok) { setStatus("sent"); trackPixel("Contact"); return; }
       const data = await res.json().catch(() => ({}));
       setError(res.status === 503 ? `Our email service isn’t connected yet. Please write to us at ${BUSINESS.email}.` : data.error || "Something went wrong. Please try again.");
     } catch { setError(`Could not reach the server. Please write to us at ${BUSINESS.email}.`); }

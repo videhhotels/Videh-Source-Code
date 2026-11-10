@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { trackPixel } from "@/lib/pixel";
 import { CheckCircle2, CalendarHeart, PhoneCall, Landmark, Navigation, ArrowRight, Mail } from "lucide-react";
 import { BUSINESS as B } from "@/lib/business";
 
@@ -14,7 +15,14 @@ export default function ThankYou() {
   const [info, setInfo] = useState<Info>({});
   useEffect(() => {
     // Details are passed from the form through this tab's session only (never in the web address).
-    try { const raw = sessionStorage.getItem(THANKS_KEY); if (raw) setInfo(JSON.parse(raw)); } catch {}
+    try {
+      const raw = sessionStorage.getItem(THANKS_KEY);
+      if (raw) {
+        setInfo(JSON.parse(raw));
+        // Count one Meta "Lead" per enquiry (a page refresh does not count it again).
+        if (sessionStorage.getItem("videh-lead-tracked") !== raw) { sessionStorage.setItem("videh-lead-tracked", raw); trackPixel("Lead", { content_name: "Wedding enquiry" }); }
+      }
+    } catch {}
     window.scrollTo(0, 0);
   }, []);
 

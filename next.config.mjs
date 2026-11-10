@@ -4,11 +4,11 @@ const isProd = process.env.NODE_ENV === "production";
 // its own files, Supabase (enquiry form, blog and its cover photos), Google Maps (the map), and the placeholder photos from Unsplash.
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isProd ? "" : " 'unsafe-eval'"}`,
+  `script-src 'self' 'unsafe-inline' https://connect.facebook.net${isProd ? "" : " 'unsafe-eval'"}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://images.unsplash.com https://*.google.com https://*.gstatic.com https://*.googleapis.com https://*.supabase.co",
+  "img-src 'self' data: blob: https://images.unsplash.com https://*.google.com https://*.gstatic.com https://*.googleapis.com https://*.supabase.co https://www.facebook.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co" + (isProd ? "" : " ws://localhost:* http://localhost:*"),
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.facebook.com https://connect.facebook.net" + (isProd ? "" : " ws://localhost:* http://localhost:*"),
   "frame-src https://www.google.com https://maps.google.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",

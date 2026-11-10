@@ -16,6 +16,8 @@ export default function PrivacyPage() {
       <p>We use your details to call you back and plan your event. We do not sell your personal information.</p>
       <h2>Who sees it</h2>
       <p>Your enquiry details are seen only by our team. Service providers who help us run the site may process data on our behalf.</p>
+      <h2>Cookies and advertising</h2>
+      <p>We use the Meta Pixel (by Meta, the company behind Facebook and Instagram) to understand which of our ads bring visitors to this site and to show our ads to people likely to be planning a wedding. It sets cookies and tells Meta which pages you visit here and when an enquiry is sent. It never receives your name, phone number, email or wedding details. You can control ad tracking in your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener noreferrer">Facebook ad preferences</a> or by blocking third-party cookies in your browser.</p>
       <h2>Your choices</h2>
       <p>To ask us to correct or delete your information, <Link href="/contact">contact us</Link> or write to {B.email}.</p>
       <h2>Changes to this policy</h2>
